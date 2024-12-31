@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#Corb Alexia-Gabriela
+
+## verificam daca fisierul exista cu comanda test -f
+
+sudo test [-f /var/log/syslog] && sudo test [-r /var/log/syslog] && tail -n 10 /var/log/syslog || (sudo touch /var/log/syslog && echo "Fisier creat")
+

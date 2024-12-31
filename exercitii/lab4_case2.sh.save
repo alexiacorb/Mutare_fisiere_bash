@@ -1,0 +1,8 @@
+#!/bin/bash 
+# Corb ALexia-Gabriela
+
+echo "Meniu despre spatiul pe disk"
+echo "1) informatii disk"
+echo "2) Sterge fisierele temporare "
+
+df -h
