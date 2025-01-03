@@ -31,6 +31,7 @@ initializare_git(){
     git -C "$repository" init && echo "Repository-ul git a fost inițializat cu succes." || echo "Eroare la inițializarea repository-ului."
     git config --local user.email "alexia.corb04@e-uvt.ro"
     git config --local user.name "Corb Alexia"
+    git branch -M main
 }
 ## functie pentru mutarea fisierelor in git 
 ## stocam toate fisierele dorite intr un director de back up 
@@ -52,9 +53,12 @@ mutare_fisiere_git(){
 		else
     			git commit -m "Fisierele au fost adaugate cu succes in git" && echo "Fișierele au fost commise cu succes" || echo "Eroare la commit"
     			git remote add origin "$link_github" 2>/dev/null
-    			git push -u origin main
-		fi
+    			if git branch --list | grep -q 'main'; then
+                		git push -u origin main
+            		else
+               		 	git push -u origin master
+            		fi
+		fi 
 	fi 
-	
 }
-mutare_fisiere_git "/home/student/Desktop/ProiectB/.git/" "https://github.com/alexiacorb/Mutare_fisiere_bash" 
+mutare_fisiere_git "git" "https://github.com/alexiacorb/Mutare_fisiere_bash" 
